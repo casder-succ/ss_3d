@@ -9,7 +9,7 @@ export default class Menu {
     this.loader = new THREE.FontLoader();
     const font = this.loader.parse(faceType);
     
-    this.worlds = ['You\'re', 'Cute', 'As', 'Fuck'];
+    this.worlds = ['Paralect', 'Startup', 'Summer'];
     this.scene = scene;
     this.world = world;
     this.camera = camera;
