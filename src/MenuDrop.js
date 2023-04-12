@@ -31,6 +31,9 @@ export default class Menu {
     document.addEventListener('pointerdown', (event) => this.pointerHandler(event));
     document.addEventListener('pointerup', (event) => this.pointerHandler(event));
     document.addEventListener('pointermove', (event) => this.pointerHandler(event));
+    document.addEventListener('touchstart', (event) => this.pointerHandler(event));
+    document.addEventListener('touchend', (event) => this.pointerHandler(event));
+    document.addEventListener('touchmove', (event) => this.pointerHandler(event));
     document.addEventListener('click', () => this.onClick());
     window.addEventListener('mousemove', (e) => this.onMouseMove(e));
   }
@@ -84,7 +87,7 @@ export default class Menu {
       const { type } = event;
 
       switch (type) {
-        case 'pointerdown': {
+        case 'pointerdown' || 'touchstart': {
           this.raycaster.setFromCamera(this.mouse, this.camera);
           const intersects = this.raycaster.intersectObjects(this.scene.children, true);
 
@@ -96,7 +99,7 @@ export default class Menu {
 
           return;
         }
-        case 'pointerup': {
+        case 'pointerup' || 'touchend': {
           this.moving = false;
 
           const diff = this.pointDiffer(event);
@@ -116,7 +119,7 @@ export default class Menu {
 
           return;
         }
-        case 'pointermove': {
+        case 'pointermove' || 'touchmove': {
           if (wordObject) {
             this.moving = true;
             
