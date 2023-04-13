@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import C from 'cannon';
-import faceType from './helvetiker_regular.typeface.json';
+
+import faceType from './DynaPuff_Regular.typeface.json';
 
 const force = 10;
 
@@ -151,8 +152,8 @@ export default class Menu {
   
   setup(font) {
     this.words = [];
-    this.margin = 6;
-    this.offset = this.worlds.length * this.margin * 0.5;
+    this.margin = 6.5;
+    this.offset = this.worlds.length * this.margin * 0.4;
     
     const options = {
       font,
@@ -181,12 +182,8 @@ export default class Menu {
       words.isGroundDisplayed = false;
       
       Array.from(innerText).forEach((letter, j) => {
-        const progress = (j) / (innerText.length - 1);
-        
         const material = new THREE.MeshPhongMaterial({
           color: new THREE.Color('#7A5099')
-            .clone()
-            .lerp(new THREE.Color('#7A5099'), progress)
         });
         const geometry = new THREE.TextBufferGeometry(letter, options);
         
@@ -201,7 +198,7 @@ export default class Menu {
         mesh.initPosition = new C.Vec3(words.len * 2, (this.worlds.length - 1 - i) * this.margin - this.offset, 0);
         mesh.initPositionOffset = new C.Vec3(
           mesh.initPosition.x,
-          mesh.initPosition.y + (i + 1) * 30 + 30 + j * 0.01,
+          mesh.initPosition.y + (i + 1) * 20 + j * 0.01,
           mesh.initPosition.z
         );
         
@@ -248,7 +245,7 @@ export default class Menu {
     });
     
     this.world.addContactMaterial(contactMat);
-    
+
     this.setConstraints();
   }
   
