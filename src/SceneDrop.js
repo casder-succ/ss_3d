@@ -74,7 +74,7 @@ export default class Scene {
     });
     
     this.renderer.setClearColor(0xFFEDFE);
-    this.renderer.setSize(APP.Layout.W, APP.Layout.H);
+    this.renderer.setSize(APP.Layout.W, APP.Layout.H - 8);
     this.renderer.setPixelRatio(window.devicePixelRatio);
     
     this.renderer.setAnimationLoop(() => this.draw());
