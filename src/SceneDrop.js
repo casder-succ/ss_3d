@@ -33,7 +33,7 @@ export default class Scene {
   onResize() {
     const { W, H } = APP.Layout;
     
-    this.camera.aspect = W / H;
+    this.camera.aspect = W / (H - 8);
     
     this.camera.top = distance;
     this.camera.right = distance * this.camera.aspect;
@@ -41,12 +41,12 @@ export default class Scene {
     this.camera.left = -distance * this.camera.aspect;
     
     this.camera.updateProjectionMatrix();
-    this.renderer.setSize(W, H);
+    this.renderer.setSize(W, H - 8);
   }
   
   setCamera() {
     const { W, H } = APP.Layout;
-    const aspect = W / H;
+    const aspect = W / (H - 8);
     
     this.camera = new THREE.OrthographicCamera(-distance * aspect, distance * aspect, distance, -distance, -10, 100);
     

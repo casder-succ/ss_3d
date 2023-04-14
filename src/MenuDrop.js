@@ -58,8 +58,8 @@ export default class Menu {
       }
       
       const { W, H } = window.APP.Layout;
-      const aspect = W / H;
-      const axeHeight = H / 2;
+      const aspect = W / (H - 8);
+      const axeHeight = (H - 8) / 2;
       const axeLength = W / 2;
       
       const { clientX: prevX, clientY: prevY } = prevEvent;
